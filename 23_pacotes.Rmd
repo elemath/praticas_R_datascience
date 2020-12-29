@@ -1,7 +1,25 @@
+-----------
 
+Praticas em R sobre manejo de pacotes
+
+-----------
+
+```{r}
+
+install.packages('e1071')
+library(e1071)
+
+```
 
 
 ```{r}
+#descarregar pacote
+
+detach('package:e1071', unload=TRUE)
+
+#remover pacote
+
+remove.packages('e1071')
 
 ```
 
