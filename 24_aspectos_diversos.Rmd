@@ -1,0 +1,39 @@
+---
+Aspectos diversos
+---
+
+
+Diretorio de trabalho
+
+
+```{r}
+getwd()
+```
+
+Tipo do objeto
+```{r}
+
+class(iris)
+
+```
+Salvar um objeto
+
+```{r}
+#clona
+
+iristeste = iris
+
+#salva
+save(iristeste, file = "iristeste.Rdata")
+
+#remove do R
+
+rm(iristeste)
+
+#testa a remoção
+
+iristeste
+
+```
+
+
