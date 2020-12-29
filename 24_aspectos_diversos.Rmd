@@ -35,5 +35,11 @@ rm(iristeste)
 iristeste
 
 ```
+Carrega1
+```{r}
 
+load(file="iristeste.Rdata")
+
+iristeste
+```
 
