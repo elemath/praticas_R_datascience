@@ -1,0 +1,44 @@
+---
+25 - Tipos de Dados e Operadores
+
+---
+
+```{r}
+
+delta=8
+
+class(delta)
+
+```c
+```{r}
+
+delta=8L # Classifica a variável como inteiro
+
+class(delta)
+
+```
+
+Outros tipos
+
+```{r}
+
+logico = TRUE  # O R é case-sensitive
+logico = F
+
+caractere = "Texto"
+caractere = 'Texto'
+
+```
+
+Operações Matemáticas
+
+
+```{r}
+
+c = 2
+d = 4
+
+(c + d)=d
+
+```
+
