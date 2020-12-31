@@ -1,0 +1,18 @@
+---
+Funções
+---
+
+```{r}
+getwd()
+
+#sem pareteses
+
+sd # Forma de abrir uma ajuda sobre a função, ou seja, digita a função sem o parentesis.
+
+head(x=iris, n=2) # Ao especificar qual é a variável, é possível colocar fora de ordem
+head(iris)
+head(iris,2)
+head(n=22)  # Se colocar uma quantidade de informações menor do que a necessária para executar a função, vai ocorrer um erro!
+
+```
+
