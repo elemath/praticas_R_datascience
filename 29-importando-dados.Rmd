@@ -32,7 +32,7 @@ Excel - é necessário importar a biblioteca "xlsx"
 ```{r}
 dados = read.xlsx("/home/matheus/Área de trabalho/Backup/ENGENHARIA/FORMACAO DATA SCIENCE - Udemy/MATERIAIS/5.Pratica em R/dados/Credit.xlsx", sheetIndex = 1)
 
-dados  # exibição da dataframe, oriundo do arquivo xlsx
+dados  # exibição da dataframe, oriundo do arquivo xlsx!
 
 ```
 
