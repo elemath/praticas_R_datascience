@@ -1,0 +1,55 @@
+--------------
+
+Principais Funções
+
+------------------
+
+```{r}
+
+esoph
+
+head(esoph) # Por padrão, aparece somente as as 6 primeiras linhas
+
+tail(esoph) # Da mesma forma, só exibe as últimas 6 linhas
+
+head(esoph, n = 10) # O
+```
+
+
+Dimensões
+
+```{r}
+
+dim(esoph)  # exibe as dimensões do objeto em um vetor na sequencia [linha coluna]
+dim(esoph)[1]  # como a saida de dim é um vetor, ele pode ser tratado, como tal para exibir uma informação específica 
+```
+
+Comprimento
+
+```{r}
+# Se for usado com objeto bidimensional, ele vai retornar as colunas
+length(islands)
+```
+Nome de Colunas
+
+```{r}
+colnames(esoph)
+```
+Nome das Lihas
+```{r}
+rownames(esoph)
+```
+
+Resumo
+
+```{r}
+
+summary(esoph) # Retorna um resumo sobre os dados e algumas estatísticas
+```
+
+Escolher arquivos
+
+```{r}
+x = file.choose()
+```
+
