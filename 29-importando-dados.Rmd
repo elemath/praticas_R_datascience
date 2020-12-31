@@ -1,0 +1,39 @@
+----------------
+
+Importação de Dados
+
+-----------------
+
+
+```{r}
+install.packages('rJava')
+install.packages('xlsx')
+
+library(xlsx)
+
+```
+
+Texto
+
+```{r}
+#texto
+
+x = read.csv(file.choose(), header = TRUE, sep = ",")
+
+x 
+
+x = read.csv("/home/matheus/Área de trabalho/Backup/ENGENHARIA/FORMACAO DATA SCIENCE - Udemy/MATERIAIS/5.Pratica em R/dados/Credit.csv", header=TRUE, sep = ",")
+
+x
+```
+
+Excel - é necessário importar a biblioteca "xlsx"
+
+```{r}
+dados = read.xlsx("/home/matheus/Área de trabalho/Backup/ENGENHARIA/FORMACAO DATA SCIENCE - Udemy/MATERIAIS/5.Pratica em R/dados/Credit.xlsx", sheetIndex = 1)
+
+dados
+
+```
+
+
