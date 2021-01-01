@@ -1,0 +1,63 @@
+--------
+
+DIY
+
+--------
+
+Atividade 01
+
+```{r}
+Ana = 8L
+Paulo = 12L
+
+ifelse(Ana<Paulo,"O menino é mais elho","A menina é mais velha")
+```
+
+Atividade 02
+
+```{r}
+class(BOD)
+```
+
+Ativiade 03
+
+```{r}
+vetor = 1:10 
+  
+vetor[seq(2,10,2)]
+```
+
+Atividade 04
+
+
+```{r}
+tail(women,10)
+```
+
+Atividade 05
+
+```{r}
+plot(iris$Sepal.Length[50:100]) plot(iris$Petal.Length[50:100]) ``` 
+
+Atividade 06
+
+```{r}
+p = c(1,2,3,4,5)
+q = c(6,7,8,9,10)
+
+p+q
+```
+
+Atividade 07
+
+```{r}
+
+dimensao = dim(CO2)
+nlinhas = dimensao[1]
+nlinhas
+ncolunas = dimensao[2]
+ncolunas
+rownames(CO2)
+colnames(CO2)
+```
+
