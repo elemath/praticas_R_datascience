@@ -1,3 +1,3 @@
-# Práticas de Datascience em R
+# Práticas em R - Datascience
 
-Praticas de datascience em R!
+Praticas do curso de Datascience com Python e R
