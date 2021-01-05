@@ -1,0 +1,54 @@
+-------------
+Tratamento e Limpeza I
+----------------------
+
+Valores Faltantes - NAs
+
+```{r}
+
+dados[!complete.cases(dados),]
+
+```
+
+Salários
+
+
+```{r}
+
+#Tratamento de salários
+
+summary(dados$Salario)
+
+#Ver mediana - Para o caso de variáveis numéricas, os campos em que não estão disponíveis os salários podem ser substituidos pela mediana
+
+median(dados$Salario, na.rm = T)
+
+
+# Atribuição da mediana aos NAs
+
+dados[is.na(dados$Salario,)]$Salario=median(dados$Salario, na.rm = T)
+
+#Verificação do procedimento, com avaliação se ainda existem NAs nos addos
+
+dados[!complete.cases(dados$Salario),]
+```
+
+Falta de padronização de gênero
+
+```{r}
+#Ver conteudo da coluna de Gêneros
+unique(dados$Genero)   # Retorna quais os tipos de valoreis declarados
+
+summary(dados$Genero)
+
+#Transformando F e Fem em Feminino
+# Transformando ""(NA) , M em Masculino, escolheu-se trocar o NA por Masculino pois é a moda da variável categórica. Como é o valor que mais aparece, ele que entra na substituição
+dados[is.na(dados$Genero) | dados$Genero == "M",]$Genero = "Masculino"
+dados[dados$Genero == "F" | dados$Genero =="Fem",]$Genero = "Feminino"
+# Exibição do resultado
+summary(dados$Genero)
+#Remover leves não utilizados
+```
+
+
+
