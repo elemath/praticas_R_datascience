@@ -1,0 +1,91 @@
+----------------------
+Exploração de Dados
+----------------------
+
+```{r}
+
+setwd('/home/matheus/Área de trabalho/Backup/ENGENHARIA/FORMACAO DATA SCIENCE - Udemy/MATERIAIS/9.Pratica em R/dados')
+
+#importa dados, string vazio como NA, string como fatores
+
+dados = read.csv("Churn.csv",sep = ";",header = TRUE, na.strings = "",stringsAsFactors = T) 
+```
+
+```{r}
+getwd()
+head(dados)
+summary(dados)
+```
+
+Colunas
+
+
+```{r}
+#Dar nomes corretos as colunas
+
+colnames(dados) = c("Id","Score","Estado","Genero","Idade","Patrimonio","Saldo","Produtos","TemCartCredito","Ativo","Salario","Saiu")
+
+head(dados)
+```
+
+#Explorar Dados, Colunas Categóricas
+
+```{r}
+
+#Estados
+counts = table(dados$Estado)
+
+counts
+
+barplot(counts, main ="Estados", xlab = "Estados")
+
+#Genero
+
+counts2 = table(dados$Genero)
+
+barplot(counts2, main = "Gênero", xlab = "Gênero")
+```
+
+Exploração de Colunas Numéricas
+
+
+```{r}
+#Score
+
+summary(dados$Score)
+boxplot(dados$Score)
+
+hist(dados$Score)
+```
+
+
+Idade 
+
+```{r}
+
+summary(dados$Idade)
+
+boxplot(dados$Idade)
+hist(dados$Idade)
+
+```
+
+Saldo 
+
+```{r}
+
+summary(dados$Saldo)
+boxplot(dados$Saldo)
+hist(dados$Saldo)
+```
+
+Salário
+
+```{r}
+
+summary(dados$Salario)
+boxplot(dados$Salario)
+hist(dados$Salario)
+
+```
+
