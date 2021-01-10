@@ -3,13 +3,18 @@ Exploração de Dados
 ----------------------
 
 ```{r}
+#setwd('~/Área de trabalho/Backup/ENGENHARIA/FORMACAO DATA SCIENCE - Udemy/MATERIAIS/9.Pratica em R')
 
-setwd('/home/matheus/Área de trabalho/Backup/ENGENHARIA/FORMACAO DATA SCIENCE - Udemy/MATERIAIS/9.Pratica em R/dados')
+require("knitr")
+#opts_knit$set(root.dir = '~/Área de trabalho/Backup/ENGENHARIA/FORMACAO DATA SCIENCE - Udemy/MATERIAIS/9.Pratica em R')
+getwd()
 
 #importa dados, string vazio como NA, string como fatores
 
-dados = read.csv("Churn.csv",sep = ";",header = TRUE, na.strings = "",stringsAsFactors = T) 
+dados = read.csv("~/Área de trabalho/Backup/ENGENHARIA/FORMACAO DATA SCIENCE - Udemy/MATERIAIS/9.Pratica em R/dados/Churn.csv",sep = ";",header = TRUE, na.strings = "",stringsAsFactors = TRUE) 
+
 ```
+
 
 ```{r}
 getwd()
