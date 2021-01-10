@@ -1,0 +1,136 @@
+-------------
+Tratamento e Limpeza I
+----------------------
+
+Valores Faltantes - NAs
+
+```{r}
+
+dados[!complete.cases(dados),]
+
+```
+
+Salários
+
+
+```{r}
+
+#Tratamento de salários
+
+summary(dados$Salario)
+
+#Ver mediana - Para o caso de variáveis numéricas, os campos em que não estão disponíveis os salários podem ser substituidos pela mediana
+
+median(dados$Salario, na.rm = T)
+
+
+# Atribuição da mediana aos NAs
+
+dados[is.na(dados$Salario,)]$Salario=median(dados$Salario, na.rm = T)
+
+#Verificação do procedimento, com avaliação se ainda existem NAs nos addos
+
+dados[!complete.cases(dados$Salario),]
+```
+
+Falta de padronização de gênero
+
+```{r}
+#Ver conteudo da coluna de Gêneros
+unique(dados$Genero)   # Retorna quais os tipos de valoreis declarados
+
+summary(dados$Genero)
+
+#Transformando F e Fem em Feminino
+# Transformando ""(NA) , M em Masculino, escolheu-se trocar o NA por Masculino pois é a moda da variável categórica. Como é o valor que mais aparece, ele que entra na substituição
+dados[is.na(dados$Genero) | dados$Genero == "M",]$Genero = "Masculino"
+dados[dados$Genero == "F" | dados$Genero =="Fem",]$Genero = "Feminino"
+# Exibição do resultado
+summary(dados$Genero)
+#Remover levels não utilizado
+dados$Genero = factor(dados$Genero)
+dados$Genero  
+```
+
+Idade fora do domínio 
+
+```{r}
+
+summary(dados$Idade)
+#Fora do domínio, numérico - ver idades anormais
+dados[dados$Idade<0 | dados$Idade>110,]$Idade
+#não temos idades com NAs
+dados[is.na(dados$Idade),]
+#opção, preencher com mediana
+median(dados$Idade)
+#substituição
+dados[dados$Idade<0 | dados$Idade,]$Idade = median[dados$Idade]
+#buscando novamente as idades anormais
+dados[dados$Idade<0 | dados$Idade>110,]$Idade
+summary(dados$Idade)
+```
+
+Dados duplicados
+
+```{r}
+
+x = dados[duplicated(dados$Id),]
+x
+
+#Verifica-se qu eo ID 81 está duplicado
+# deve-se excluir pelo ID e não pelo índice
+
+dados = dados[-c(82),]
+ 
+#busca-se a linha que estava duplicada
+
+dados[dados$Id == x$Id,]
+
+# verifica-se novamente os duplicados
+
+x = dados[duplicated(dados$Id),]
+x
+```
+
+Estado fora do dominio
+
+```{r}
+
+#fora do dominio - categorico
+
+unique(dados$Estado)
+summary(dados$Estado)
+
+dados[!dados$Estado %in% c("RS","SC","PR"),]$Estado = "RS"
+
+summary(dados$Estado)
+#Removendo os fatores não usados
+
+
+```
+
+
+Outliers
+
+```{r}
+#outliers, criando um parâmetro com desvio padrão
+
+desv =  sd(dados$Salario, na.rm = T) 
+desv
+
+dados[dados$Salario >= 2*desv,]$Salario
+
+#outra forma de visualizar os outliers
+
+boxplot(dados$Salario)
+boxplot(dados$Salario)$out
+x = boxplot(dados$Salario, outline = F)$out
+x
+# Atualização para a mediana
+
+dados[dados$Salario >= 2*desv,]$Salario = median(dados$Salario)
+#Checar se os outliers foram removidos
+
+dados[dados$Salario >= 2*desv,]$Salario
+```
+
