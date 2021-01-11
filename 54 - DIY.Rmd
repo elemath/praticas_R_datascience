@@ -1,0 +1,103 @@
+------------------------------------------
+DIY - 58
+
+Tratamento de dados do arquivo "tempo.csv"
+
+Domínio:
+
+Aparência: sol, nublado, chuva
+Temperatura: -130 ~ 130 F
+Umidade: 0 ~ 100
+Jogar: sim/nao
+
+Tratar os valores NAs
+-----------------------------------------
+
+Carregar os arquivos
+
+```{r}
+
+dados = read.csv("~/Área de trabalho/Backup/ENGENHARIA/FORMACAO DATA SCIENCE - Udemy/MATERIAIS/9.Pratica em R/dados/tempo.csv",sep = ";",header = TRUE, na.strings = "",stringsAsFactors = TRUE) 
+
+dados
+
+summary(dados)
+
+```
+
+Tratamento dos Dados Categóricos
+
+```{r}
+#Aparência
+
+dados$Aparencia
+
+table(dados$Aparencia)
+
+barplot(table(dados$Aparencia))
+
+dados = dados[!dados$Aparencia=="menos",]
+
+summary(dados$Aparencia)
+
+dados
+
+unique(dados$Aparencia)
+
+dados$Aparencia = factor(dados$Aparencia)
+
+unique(dados$Aparencia)
+```
+
+```{r}
+
+#Jogar
+
+summary(dados)
+```
+
+```{r}
+#Vento
+dados[is.na(dados$Vento),]$Vento = c("FALSO")
+
+summary(dados)
+```
+
+
+Dados Numéricos
+
+
+```{r}
+
+# Umidade
+
+boxplot(dados$Umidade)$out
+
+dados = dados[!is.na(dados$Umidade),]
+
+summary(dados$Umidade)
+
+dados[dados$Umidade >= 2*sd(dados$Umidade),]$Umidade = median(dados$Umidade)
+
+boxplot(dados$Umidade)
+
+dados$Umidade
+```
+
+```{r}
+
+# Umidade
+
+boxplot(dados$Temperatura)$out
+
+dados = dados[!is.na(dados$Temperatura),]
+
+summary(dados$Temperatura)
+
+dados[dados$Temperatura >= 2*sd(dados$Temperatura),]$Temperatura = median(dados$Temperatura)
+
+boxplot(dados$Temperatura)
+
+dados$Temperatura
+```
+
