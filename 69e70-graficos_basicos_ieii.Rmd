@@ -1,0 +1,142 @@
+------------
+
+Gráficos Básicos
+
+-------------
+
+
+```{r}
+
+#Histograma
+
+trees
+
+hist(trees$Height)
+
+hist(trees$Height, main = "Árvores", ylab = "Frequência", xlab = "Altura", col = "blue")
+hist(trees$Height, main = "Árvores", ylab = "Frequência", xlab = "Altura", col = "green", density = 10, breaks = 50)
+```
+
+```{r}
+
+#Densidade 
+
+densidade = density(trees$Height)
+plot(densidade)
+```
+
+
+
+```{r}
+#Plotar gráfico da Densidade sobre o Histograma
+hist(trees$Height, xlab=NULL, ylab=NULL, main=NULL) # A passagem do parâmetro NULL faz com que não sejam exibidos os textos padrão nos eixot, pois vamos fazer a sobreposição de gráficos
+
+par(new=TRUE) # Esse comando funciona como um Hold On do MATLAB
+
+plot(densidade) # È válido ressaltar que, nesse caso, o bloco deve ser executado de uma só vez, com o comando Ctrl + Shift + Enter
+
+
+```
+
+
+```{r}
+
+#Gráfico de Dispersão - Adequado para comparar variáveis contínuas 
+
+# O comando plot se adapta quando é alimentado com mais de uma variável
+
+plot(trees$Girth, trees$Volume)
+
+plot(trees$Girth, trees$Volume, main="Arvores")
+
+plot(trees$Girth, trees$Volume, main="Arvores", xlab = "Circunferência", ylab = "Volume", col = "blue", pch = 20) # O parêmetro PCH muda o forma do elemento gráfico
+```
+
+
+```{r}
+
+#Mudança de tipo do gráfico de dispersão
+
+plot(trees$Girth, trees$Height, ylab="Circunferência", xlab = "Volume", col = "blue", main="Árvore", pch = 20, type = "l")
+```
+
+
+```{r}
+
+# Tremulação, diminui a sobreposição
+
+# È um comando que reduz a sobreposição de dados!
+
+plot(jitter(trees$Girth), trees$Height, ylab="Circunferência", xlab = "Volume", col = "blue", main="Árvore")
+
+```
+
+
+```{r}
+
+#Legenda com dimensão Categórica
+
+CO2
+
+plot(CO2$conc,CO2$uptake, pch = 20, col =  CO2$Treatment)
+legend("bottomright", legend = c("nonchilled","chilled"), cex = 1, fill=c("black","red"))
+```
+
+
+
+```{r}
+
+#Novos Dados
+
+plot(trees)
+```
+
+
+```{r}
+
+#Divisão de tela
+
+split.screen(figs=c(2,2))
+
+screen(1)
+plot(trees$Girth,trees$Volume)
+screen(2)
+plot(trees$Girth,trees$Height)
+screen(3)
+plot(trees$Height,trees$Volume)
+screen(4)
+hist(trees$Volume)
+close.screen(all=TRUE)
+
+```
+
+```{r}
+
+# Boxplot
+
+boxplot(trees$Volume, main="Arvores", xlab = "Volume")
+
+boxplot(trees$Volume, main="Arvores", xlab = "Volume", col = "blue", horizontal = TRUE)
+
+boxplot(trees$Volume, main="Arvores", xlab = "Volume", col = "blue", outline = FALSE)
+```
+
+```{r}
+#Notch - gera um "talho" no boxplo na posição da medianat
+
+boxplot(trees$Height, main = "Arvores", xlab = "Altura", col = "blue", notch = TRUE)
+
+#dados do gráfico
+
+boxplot.stats(trees$Height)
+#lÇe apenas uma informação
+boxplot.stats(trees$Height)$stats
+```
+
+
+```{r}
+#Vários gráficos de box plot
+
+boxplot(trees)
+```
+
