@@ -140,3 +140,37 @@ boxplot.stats(trees$Height)$stats
 boxplot(trees)
 ```
 
+```{r}
+
+#Agregação
+
+InsectSprays
+spray = aggregate(. ~spray, data = InsectSprays, sum)
+spray
+```
+
+
+```{r}
+
+#Gráfico de barras
+
+barplot(spray$count, col = gray.colors(6), xlab = "Spray", ylab = "Total", names.art = spray$spray)
+box()
+```
+
+
+```{r}
+
+#Gráfico de Setores - Pizza
+
+pie(spray$count, labels = spray$spray, main = "Spray", col = c(1:6))
+
+legend("bottomright", legend = spray$spray, cex = 1, fill = c(1:6))
+```
+
+
+```{r}
+
+
+```
+
