@@ -1,0 +1,38 @@
+----------
+Produção de Tabelas
+----------
+
+
+```{r}
+#install.packages("stargazer")
+library(stargazer)
+```
+
+```{r}
+#Formato Latex
+
+stargazer(iris) # por padrão entrega o Latex
+```
+
+```{r}
+#Formato Html
+
+stargazer(iris, type = 'html')
+```
+
+
+
+
+```{r}
+#Formato Texto
+
+stargazer(iris, type = 'text')
+```
+
+
+
+```{r}
+#Formato Texto
+
+stargazer(women, summary = T)
+```
