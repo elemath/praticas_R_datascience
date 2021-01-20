@@ -1,0 +1,110 @@
+---------
+Pacote Lattice
+---------
+
+
+```{r}
+# É um pacote que não precisa ser instalado!
+
+library(lattice)
+```
+
+```{r}
+
+#Box plot
+
+bwplot(trees$Volume)
+bwplot(trees$Volume, main= "Arvores", xlab="Volume")
+```
+
+```{r}
+#Histograma
+#Aspecto é a proporção, nint é o número de quebras e type é o tipo, podendo assumir: percent, count ou density
+
+histogram(trees$Volume, main = "Árvores", xlab = "Volume", aspect = 1, type = "percent",nint = 20)
+```
+
+```{r}
+# Histograma condicional 
+
+#Peso das galinhas de acordo coma alimentação
+
+chickwts
+
+#histograma
+
+histogram(chickwts$weight)
+# Agregamos os dados
+
+aggregate(chickwts$weight, by = list(chickwts$feed), FUN=sum)
+
+# Histograma condicional
+
+histogram(~weight | feed, data = chickwts)
+```
+
+```{r}
+#Gráfico de dispersão condicional
+# C02, seis plantas em dois locais, refrigeradas ou não durante a noite
+
+#CO2 , conc: concentração de co2, uptake: captação de CO2
+
+CO2
+xyplot(CO2$conc ~ CO2$uptake)
+#Type é a origem
+xyplot(CO2$conc ~ CO2$uptake | CO2$Type)
+#Refrigerado ou não
+xyplot(CO2$conc ~ CO2$uptake | CO2$Treatment)
+```
+
+```{r}
+
+# Cancer de Esôfago
+
+esoph
+dotplot(esoph$agegp ~ esoph$ncontrols, data = esoph)
+dotplot(esoph$agegp ~ esoph$ncontrols| esoph$tobgp)
+```
+
+```{r}
+# Matriz de Dispersão
+
+splom(~CO2[4:5] | CO2$Type, CO2)
+```
+
+
+```{r}
+
+#Densidade condicional
+
+densityplot(~CO2$conc | CO2$Treatment, plot.points = FALSE)
+
+densityplot(CO2$conc)
+
+  densityplot(~CO2$conc | CO2$Treatment)
+```
+
+
+
+
+
+
+
+
+```{r}
+# Graficos em 3D
+# Splay para repelir abelhas
+
+OrchardSprays
+
+cloud(decrease ~ rowpos * colpos, data = OrchardSprays)
+cloud(decrease ~ rowpos * colpos, groups = treatment, data = OrchardSprays)
+```
+```{r}
+
+#Level Plot
+
+trees
+levelplot(Girth ~ Height * Volume, data = trees)
+```
+
